@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WealthBeaste | Done-For-You Faceless Online Brands</title>
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --primary-color: #0a192f; /* Deep Navy */
+            --primary-light: #112240; /* Lighter Navy */
+            --secondary-color: #ffc107; /* Gold/Amber */
+            --text-dark: #333333;
+            --text-light: #f4f4f4;
+            --bg-light: #ffffff;
+            --bg-off-white: #f8f9fa;
+            --section-padding: 80px 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* --- Typography --- */
+        h1, h2, h3, h4 {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary-color);
+            margin: 15px auto 0;
+        }
+
+        p { margin-bottom: 1.5rem; }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .text-center { text-align: center; }
+        .highlight-gold { color: var(--secondary-color); }
+        .icon-large { font-size: 2.5rem; display: block; margin-bottom: 15px; }
+
+        /* --- Buttons --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #e0a800;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        /* --- Navbar --- */
+        .navbar {
+            background-color: var(--primary-color);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo span { color: var(--secondary-color); }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li a {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 0 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .nav-links li a:hover { color: var(--secondary-color); }
+        .nav-cta { margin-left: 20px !important; }
+
+        /* --- Hero Section --- */
+        #home {
+            height: 100vh;
+            background: linear-gradient(135deg, #020c1b 0%, #0a192f 50%, #112240 100%);
+            display: flex;
+            align-items: center;
+            color: var(--text-light);
+            padding-top: 60px;
+            text-align: center;
+        }
+
+        .hero-content { max-width: 800px; margin: 0 auto; }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #d0d0d0;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* --- Section Styling --- */
+        section { padding: var(--section-padding); }
+        .bg-off-white { background-color: var(--bg-off-white); }
+
+        /* --- Flex/Grid layouts --- */
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .why-list li {
+            list-style: none;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .why-list li span {
+            color: var(--secondary-color);
+            margin-right: 15px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            text-align: center;
+            border-top: 4px solid var(--secondary-color);
+            transition: transform 0.3s;
+        }
+        
+        .step-card:hover { transform: translateY(-10px); }
+
+        .step-number {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            line-height: 30px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .about-content { max-width: 800px; margin: 0 auto; text-align: center;}
+        
+        .mission-box {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .package-card {
+            background: var(--bg-light);
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .package-card.popular {
+            border: 2px solid var(--secondary-color);
+            transform: scale(1.05);
+            z-index: 2;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .package-card ul { list-style: none; margin: 2rem 0; text-align: left; }
+        .package-card li { margin-bottom: 0.8rem; padding-left: 25px; position: relative; }
+        .package-card li::before {
+            content: '✔';
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .competitor-comparison {
+            margin-top: 4rem;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .case-study-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .case-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--secondary-color);
+        }
+        .case-card ul { margin-left: 20px; }
+
+        .testimonial-slider { max-width: 800px; margin: 0 auto; text-align: center; }
+        .testimonial-item {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            padding: 20px;
+            background: #fdfdfd;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .testimonial-icon {
+            color: var(--secondary-color);
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        #contact {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+        }
+        #contact h2 { color: var(--text-light); }
+        #contact h2::after { background: var(--secondary-color); }
+        #contact p { font-size: 1.2rem; color: #d0d0d0; }
+
+        .cta-buttons-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 400px;
+            margin: 3rem auto 0;
+        }
+
+        footer {
+            background: #050f1e;
+            color: #777;
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.9rem;
+        }
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .logo { font-size: 1.4rem; padding-left: 20px; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-btns { flex-direction: column; }
+            .btn { width: 100%; text-align: center; }
+            .why-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .package-card.popular { transform: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">Wealth<span>Beaste</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#case-studies">Results</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact" class="btn btn-primary nav-cta">Apply Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home">
+        <div class="container hero-content">
+            <h1>Build a Profitable Faceless Online Brand — <span class="highlight-gold">100% Done For You.</span></h1>
+            <p>Grow with UGC, Affiliate Systems & Automated Theme Pages… without ever showing your face. We design, launch, and scale automated income systems that let you earn online quietly, smartly, and sustainably.</p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn btn-primary">➡️ Get Your Done-For-You Business</a>
+                <a href="#how-it-works" class="btn btn-outline">How It Works</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-this-works" class="bg-off-white">
+        <div class="container">
+            <div class="why-grid">
+                <div>
+                    <h2>Why This Works</h2>
+                    <p>Most people struggle to start an online business because they don’t want to show their face, don’t know what to post, or don’t have time to stay consistent.</p>
+                    <p>WealthBeaste solves all of that. We build a business that runs quietly in the background.</p>
+                </div>
+                <div>
+                    <ul class="why-list">
+                        <li><span>✔</span> A niche engineered for profit</li>
+                        <li><span>✔</span> Daily faceless UGC content (AI + Human-Edited)</li>
+                        <li><span>✔</span> Fully automated theme page brand</li>
+                        <li><span>✔</span> Affiliate monetisation system plugged in</li>
+                        <li><span>✔</span> No filming, no editing, no managing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container about-content">
+            <h2>Who I Am</h2>
+            <p>I’m WealthBeaste, a digital creator, automation strategist, and architect of faceless online brands.</p>
+            <p>I help beginners and busy people build income systems using High-converting UGC, Affiliate marketing, and Automated faceless theme pages.</p>
+            <p>I started by building my own faceless pages and affiliate income streams. Now I deliver the same systems to clients who want results without showing their face or learning complex skills.</p>
+            <div class="mission-box">
+                <h3>My Mission</h3>
+                <p style="margin-bottom:0; color: var(--text-light);">To empower you with a simple, peaceful, profitable online business that works even while you sleep.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="bg-off-white">
+        <div class="container">
+            <h2>The WealthBeaste 6-Step System</h2>
+            <p class="text-center">You don’t create. You don’t edit. You don’t manage. We handle everything — and you earn.</p>
+            
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <span class="icon-large">🔍</span>
+                    <h3>Niche Selection</h3>
+                    <p>Data-driven selection studying competition, demand, affiliate rates, and long-term earning potential.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <span class="icon-large">🎨</span>
+                    <h3>Theme Page Setup</h3>
+                    <p>Branding, templates, full automation system setup — this is your digital real estate.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <span class="icon-large">🎥</span>
+                    <h3>Daily Faceless UGC</h3>
+                    <p>Done For You high-engagement reels, video UGC, and carousels. No face needed.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <span class="icon-large">🔗</span>
+                    <h3>Affiliate Monetisation</h3>
+                    <p>We join and configure high-paying affiliate programs tailored specifically to your niche.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <span class="icon-large">🚀</span>
+                    <h3>Smart Automation</h3>
+                    <p>Consistent posting, optimized scripts, audience building, and scalable reach.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">6</div>
+                    <span class="icon-large">📈</span>
+                    <h3>Performance Dashboard</h3>
+                    <p>Track clicks, sales, conversions, traffic and growth in one simple dashboard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2>Packages By WealthBeaste</h2>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <h3>Starter Package</h3>
+                    <p>Perfect for beginners starting their first online income stream.</p>
+                    <ul>
+                        <li>Niche research</li>
+                        <li>Theme page setup</li>
+                        <li>15 faceless UGC posts</li>
+                        <li>Affiliate setup</li>
+                        <li>Posting schedule</li>
+                    </ul>
+                    <a href="mailto:hello@example.com?subject=Inquiry: Starter Package" class="btn btn-outline">Inquire Now</a>
+                </div>
+                 <div class="package-card popular">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <h3>Growth Package</h3>
+                    <p>For people who want consistent content + scaling.</p>
+                    <ul>
+                        <li>Everything in Starter</li>
+                        <li>40+ monthly UGC posts</li>
+                        <li>Long-form content + carousels</li>
+                        <li>Automation tools</li>
+                        <li>Monthly analytics</li>
+                    </ul>
+                    <a href="mailto:hello@example.com?subject=Inquiry: Growth Package" class="btn btn-primary">Inquire Now</a>
+                </div>
+                 <div class="package-card">
+                    <h3>Premium "Done-For-You"</h3>
+                    <p>A full digital business built and managed by WealthBeaste.</p>
+                    <ul>
+                        <li>Everything in Growth</li>
+                        <li>Complete affiliate ecosystem</li>
+                        <li>Custom link-in-bio system</li>
+                        <li>Audience growth plan</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <a href="mailto:hello@example.com?subject=Inquiry: Premium Package" class="btn btn-outline">Inquire Now</a>
+                </div>
+            </div>
+
+            <div class="competitor-comparison">
+                <h3>Why WealthBeaste Beats Competitors</h3>
+                <p>Most platforms sell you templates and expect YOU to do the posting. WealthBeaste is different.</p>
+                <p style="margin-bottom:0;">We build the entire business for you → from niche to content to monetisation to automation. No face. No burnout. Your income stream becomes a system, not stress.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="case-studies" class="bg-off-white">
+        <div class="container">
+            <h2>Case Studies (Realistic Examples)</h2>
+            <div class="case-study-grid">
+                <div class="case-card">
+                    <h4>📱 Tech Gadget Page</h4>
+                    <ul>
+                        <li>0 → 15K monthly views</li>
+                        <li>Growing affiliate clicks</li>
+                        <li>Consistent automation</li>
+                    </ul>
+                </div>
+                <div class="case-card">
+                    <h4>💅 Beauty / Skincare Page</h4>
+                    <ul>
+                        <li>Daily faceless UGC</li>
+                        <li>Automated posts</li>
+                        <li>Reliable conversions</li>
+                    </ul>
+                </div>
+                <div class="case-card">
+                    <h4>🌍 Local Niche (Africa-Based)</h4>
+                    <ul>
+                        <li>Local + global affiliate payouts</li>
+                        <li>High trust content</li>
+                        <li>Strong engagement</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <div class="container testimonial-slider">
+            <h2>What Clients Say</h2>
+            <div class="testimonial-item">
+                <span class="testimonial-icon">❝</span>
+                “WealthBeaste built my entire theme page from zero — now it runs on autopilot.”
+            </div>
+            <div class="testimonial-item">
+                <span class="testimonial-icon">❝</span>
+                “In 30 days I got my first affiliate sales without showing my face.”
+            </div>
+            <div class="testimonial-item">
+                <span class="testimonial-icon">❝</span>
+                “Easiest system I’ve ever used. I literally do nothing except check my dashboard.”
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="bg-off-white">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>Do I need to show my face?</h4>
+                    <p>No. The entire system is faceless and anonymous.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>How fast can I earn?</h4>
+                    <p>Most clients begin seeing clicks within 2–6 weeks depending on niche & traffic.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Who manages the content?</h4>
+                    <p>WealthBeaste handles creation, posting, and optimisation — everything.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What do I need to begin?</h4>
+                    <p>Just your name, email, niche preference, and payment method.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Start Your Faceless Online Business Today</h2>
+            <p>Built by WealthBeaste. Managed by us. Profitable for you.</p>
+            <div class="cta-buttons-vertical">
+                <a href="mailto: wealthbeast36@gmail.com?subject=Application for WealthBeaste" class="btn btn-primary">➡️ Apply Now</a>
+                <a href="https://calendly.com/wealthbeaste/30min" target="_blank" class="btn btn-outline" style="background:white; color:var(--primary-color);">➡️ Book a Call</a>
+                <a href="https://wa.me/256759327843" target="_blank" class="btn btn-outline" style="background:white; color:var(--primary-color);">💬 WhatsApp for Quick Response</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 WealthBeaste. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
